@@ -36,13 +36,12 @@ async def main(nama, email, c):
         await page.fill("#profile_password_confirmation", "Admin123")
         await page.check("input.form-check-input")
         
+        await page.wait_for_timeout(1000)
         if(c==0):
-            await page.wait_for_timeout(1000)
             await page.screenshot(path=f"{c}_0reg.png")
         # 3. Regis
         await page.click("button[type='submit']")
         await page.wait_for_timeout(5000)
-        
         #await page.screenshot(path=f"{c}_1login.png")
         await page.wait_for_timeout(2000)
         # 4. Tombol lewati
@@ -61,7 +60,7 @@ async def main(nama, email, c):
         await page.wait_for_timeout(2000)
         await page.mouse.click(277, 654)
         await page.wait_for_timeout(1000)
-        #await page.screenshot(path=f"{c}_5hall.png")
+        #await page.screenshot(path=f"{c}_4hall.png")
         # 7. Filter booth
         await page.mouse.click(420, 30)
         await page.wait_for_timeout(1000)
@@ -80,7 +79,7 @@ async def main(nama, email, c):
         await browser.close()
 
 if __name__ == "__main__":
-    jumlah = 200
+    jumlah = 500
     mulaiDari = 0
     print("Mulai...")
     for i in range (mulaiDari, mulaiDari+jumlah):
