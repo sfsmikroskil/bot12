@@ -36,42 +36,45 @@ async def main(nama, email, c):
         await page.fill("#profile_password_confirmation", "Admin123")
         await page.check("input.form-check-input")
         
-        await page.wait_for_timeout(1000)
-        await page.screenshot(path=f"{c}_0reg.png")
+        if(c==0):
+            await page.wait_for_timeout(1000)
+            await page.screenshot(path=f"{c}_0reg.png")
         # 3. Regis
         await page.click("button[type='submit']")
         await page.wait_for_timeout(5000)
-        await page.screenshot(path=f"{c}_1login.png")
+        
+        #await page.screenshot(path=f"{c}_1login.png")
         await page.wait_for_timeout(2000)
         # 4. Tombol lewati
         await page.mouse.click(352, 1007)
         await page.wait_for_timeout(3000)
-        await page.screenshot(path=f"{c}_2lewati.png")
+        #await page.screenshot(path=f"{c}_2lewati.png")
 
         #Close banner
         await page.wait_for_timeout(3000)
         #Tombol close banner
         await page.mouse.click(592, 531)
         #await page.wait_for_timeout(2000)
-        await page.screenshot(path=f"{c}_3banner.png")
+        #await page.screenshot(path=f"{c}_3banner.png")
 
         # 6. Masukk Hall
         await page.wait_for_timeout(2000)
         await page.mouse.click(277, 654)
         await page.wait_for_timeout(1000)
-        await page.screenshot(path=f"{c}_5hall.png")
+        #await page.screenshot(path=f"{c}_5hall.png")
         # 7. Filter booth
         await page.mouse.click(420, 30)
         await page.wait_for_timeout(1000)
         #await page.screenshot(path=f"{c}_5filter.png")
         await page.keyboard.type("UKPBJ KEMENTERIAN IM")
         await page.wait_for_timeout(1000)
-        await page.screenshot(path=f"{c}_6booth.png")
+        #await page.screenshot(path=f"{c}_6booth.png")
         await page.keyboard.press("Enter")
         await page.wait_for_timeout(2000)
         await page.mouse.click(601, 516)
         await page.wait_for_timeout(2000)
-        await page.screenshot(path=f"{c}_7booth.png")
+        if(c==0):
+            await page.screenshot(path=f"{c}_7booth.png")
 
         print(f"Akun : ({c}) {nama} | Selesai")
         await browser.close()
